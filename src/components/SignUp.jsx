@@ -1,29 +1,71 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SignUp = () => {
+    const [formData, setFormData] = useState({
+        first_name: '',
+        username: '',
+        password: '',
+        confirm_password: '',
+    });
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData, 
+            [e.target.name]: e.target.value
+        })
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        try {
+            const response = await fetch('http://localhost:3000/blog/users', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(formData),
+            })
+
+            if(response.ok) {
+                // Signup successful. Redirect to login page
+                navigate('/login');
+            } else {
+                // Signup failed, handle error
+                const data = await response.json();
+                console.error('Signup error:', data.error);
+                // Display error message to the user
+            }
+        } catch(error) {
+            console.error('Signup error:', error);
+            // Display error message to the user
+        }
+    };
+
+
     return(
         <div className="signup_container">
-            <form action="" method="POST" className="signup_form">
+            <form onSubmit={handleSubmit} className="signup_form">
                 <div className="form_input_container">
 
                     <div className="form_group">
-                        <label htmlFor='firstName'>First Name: </label>
-                        <input type="text" name='firstName' id="firstName" required></input>
+                        <label htmlFor='first_name'>First Name: </label>
+                        <input type="text" name='first_name' id="first_name" value={formData.first_name} onChange={handleChange} required></input>
                     </div>
 
                     <div className="form_group">
                         <label htmlFor='username'>Username: </label>
-                        <input type="text" name='username' id="username" required></input>
+                        <input type="text" name='username' id="username" value={formData.username} onChange={handleChange} required></input>
                     </div>
 
                     <div className="form_group">
                         <label htmlFor='password'>Password: </label>
-                        <input type="password" name='password' id="password" required></input>
+                        <input type="password" name='password' id="password" value={formData.password} onChange={handleChange} required></input>
                     </div>  
 
                      <div className="form_group">
                         <label htmlFor='confirm_password'>Confirm Password: </label>
-                        <input type="password" name='confirm_password' id="confirm_password" required></input>
+                        <input type="password" name='confirm_password' id="confirm_password" value={formData.confirm_password} onChange={handleChange} required></input>
                     </div>
 
                     <button type="submit">Sign Up</button>                  
