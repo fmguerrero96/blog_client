@@ -7,12 +7,12 @@ function LogIn() {
                 <div className="form_input_container">
 
                     <div className="form_group">
-                        <label for='username'>Username: </label>
+                        <label htmlFor='username'>Username: </label>
                         <input type="text" name='username' id="username" required></input>
                     </div>
 
                     <div className="form_group">
-                        <label for='password'>Password: </label>
+                        <label htmlFor='password'>Password: </label>
                         <input type="password" name="password" id="password" required></input>
                     </div>
 

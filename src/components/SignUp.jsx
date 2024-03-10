@@ -5,22 +5,22 @@ const SignUp = () => {
                 <div className="form_input_container">
 
                     <div className="form_group">
-                        <label for='firstName'>First Name: </label>
+                        <label htmlFor='firstName'>First Name: </label>
                         <input type="text" name='firstName' id="firstName" required></input>
                     </div>
 
                     <div className="form_group">
-                        <label for='username'>Username: </label>
+                        <label htmlFor='username'>Username: </label>
                         <input type="text" name='username' id="username" required></input>
                     </div>
 
                     <div className="form_group">
-                        <label for='password'>Password: </label>
+                        <label htmlFor='password'>Password: </label>
                         <input type="password" name='password' id="password" required></input>
                     </div>  
 
                      <div className="form_group">
-                        <label for='confirm_password'>Confirm Password: </label>
+                        <label htmlFor='confirm_password'>Confirm Password: </label>
                         <input type="password" name='confirm_password' id="confirm_password" required></input>
                     </div>
 
