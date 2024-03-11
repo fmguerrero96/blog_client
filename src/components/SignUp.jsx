@@ -8,6 +8,8 @@ const SignUp = () => {
         password: '',
         confirm_password: '',
     });
+    const [error, setError] = useState('');
+
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -34,10 +36,12 @@ const SignUp = () => {
                 // Signup failed, handle error
                 const data = await response.json();
                 console.error('Signup error:', data.error);
+                setError(data.error);
                 // Display error message to the user
             }
         } catch(error) {
             console.error('Signup error:', error);
+            setError("An error occurred while reigistering.");
             // Display error message to the user
         }
     };
@@ -67,6 +71,8 @@ const SignUp = () => {
                         <label htmlFor='confirm_password'>Confirm Password: </label>
                         <input type="password" name='confirm_password' id="confirm_password" value={formData.confirm_password} onChange={handleChange} required></input>
                     </div>
+
+                    {error && <div className="error">{error}</div>}
 
                     <button type="submit">Sign Up</button>                  
 
