@@ -31,7 +31,6 @@ function LogIn() {
                 //Login successful. Save token in local storage. Redirect user to home page.
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
-                console.log(data.token)
                 navigate('/');
             } else {
                 //Login failed, handle error.
