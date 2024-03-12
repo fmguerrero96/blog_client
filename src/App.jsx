@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState(undefined)
+  const [blogPosts, setBlogPosts] =useState([])
 
   useEffect(() => {
       const token = localStorage.getItem('token')
@@ -20,6 +21,13 @@ function App() {
       }
   }, []);
 
+  useEffect(() => {
+    fetch('http://localhost:3000/blog/posts')
+      .then(res => res.json())
+      .then(res => setBlogPosts(res))
+  }, []);
+
+
   const handleLogOut = () => {
       localStorage.removeItem('token')
       setLoggedIn(false)
@@ -30,7 +38,7 @@ function App() {
    <div>
       <div className="navContainer">
         <NavBar loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}></NavBar>
-        <HomePage></HomePage>
+        <HomePage blogPosts={blogPosts}></HomePage>
       </div>
    </div>
   )
