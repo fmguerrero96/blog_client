@@ -33,6 +33,7 @@ function LogIn({ loggedIn, user, handleLogOut }) {
                 const data = await response.json();
                 localStorage.setItem("token", data.token);
                 navigate('/');
+                location.reload();
             } else {
                 //Login failed, handle error.
                 const data = await response.json();
