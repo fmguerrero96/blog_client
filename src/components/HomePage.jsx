@@ -1,3 +1,5 @@
+import PostPreview from "./PostPreview";
+
 const HomePage = ({ blogPosts }) => {
     return (
         <div className="home_page_container">
@@ -9,9 +11,7 @@ const HomePage = ({ blogPosts }) => {
             <div className="blog_posts_container">
                 {blogPosts ? (
                     blogPosts.map((post) => (
-                        <div className="blogCard" key={post._id}>
-                            <h3>{post.title}</h3>
-                        </div>
+                        <PostPreview key={post._id} post={post}></PostPreview>
                     ))
                 ): (
                     <p>Loading Blog Posts...</p>
