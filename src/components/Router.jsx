@@ -43,11 +43,13 @@ const Router = () => {
         },
         {
             path: "/login",
-            element: <Login loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}/>
+            element: loggedIn ? <App loggedIn={loggedIn} user={user} handleLogOut={handleLogOut} blogPosts={blogPosts} /> 
+                    : <Login loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}/>
         },
         {
             path: "/signup",
-            element: <SignUp loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}/>
+            element: loggedIn ? <App loggedIn={loggedIn} user={user} handleLogOut={handleLogOut} blogPosts={blogPosts} /> 
+                    : <SignUp loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}/>
         },
     ])
 
