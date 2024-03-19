@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import NavBar from "./NavBar";
 
-function LogIn() {
+function LogIn({ loggedIn, user, handleLogOut }) {
     const [loginData, setLoginData] = useState({
         username: '',
         password: '',
@@ -45,6 +46,7 @@ function LogIn() {
 
     return(
         <div className="login_form_container">
+            <NavBar loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}></NavBar>
             <form onSubmit={handleSubmit} className="login_form">
                 <div className="form_input_container">
 
