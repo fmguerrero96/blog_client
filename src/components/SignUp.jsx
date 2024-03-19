@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import NavBar from "./NavBar";
 
-const SignUp = () => {
+const SignUp = ({ loggedIn, user, handleLogOut }) => {
     const [formData, setFormData] = useState({
         first_name: '',
         username: '',
@@ -49,6 +50,7 @@ const SignUp = () => {
 
     return(
         <div className="signup_container">
+            <NavBar loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}></NavBar>
             <form onSubmit={handleSubmit} className="signup_form">
                 <div className="form_input_container">
 
