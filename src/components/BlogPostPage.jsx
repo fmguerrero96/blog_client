@@ -17,10 +17,14 @@ const BlogPostPage = ({ loggedIn, user, handleLogOut }) => {
         <div className="postPage">
             <NavBar loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}></NavBar>
 
-            <div className="postContainer">
-                <h1 className="postTitle">{post.title}</h1>
-                <p className="postText">{post.text}</p>
-            </div>
+            {post ? (
+                <div className="postContainer">
+                    <h1 className="postTitle">{post.title}</h1>
+                    <p className="postText">{post.text}</p>
+                </div>
+            ): (
+                <p>Loading Blog Post...</p>
+            )} 
         </div>
     )
 };
