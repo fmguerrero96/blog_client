@@ -1,4 +1,4 @@
-import NavBar from "./components/NavBar"
+import NavBar from "./NavBar"
 
 const BlogPostPage = ({ loggedIn, user, handleLogOut }) => {
 
@@ -13,3 +13,5 @@ const BlogPostPage = ({ loggedIn, user, handleLogOut }) => {
         </div>
     )
 };
+
+export default BlogPostPage;
