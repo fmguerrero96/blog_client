@@ -27,7 +27,7 @@ const BlogPostPage = ({ loggedIn, user, handleLogOut }) => {
                 <p>Loading Blog Post...</p>
             )} 
 
-            <CommentSection loggedIn={loggedIn}></CommentSection>
+            <CommentSection loggedIn={loggedIn} user={user} postID={id}></CommentSection>
         </div>
     )
 };
