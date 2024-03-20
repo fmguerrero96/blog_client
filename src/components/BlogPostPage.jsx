@@ -1,4 +1,5 @@
 import NavBar from "./NavBar"
+import CommentSection from "./CommentSection";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -25,6 +26,8 @@ const BlogPostPage = ({ loggedIn, user, handleLogOut }) => {
             ): (
                 <p>Loading Blog Post...</p>
             )} 
+
+            <CommentSection loggedIn={loggedIn}></CommentSection>
         </div>
     )
 };
