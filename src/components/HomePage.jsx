@@ -1,4 +1,5 @@
 import PostPreview from "./PostPreview";
+import { Link } from "react-router-dom";
 
 const HomePage = ({ blogPosts }) => {
     return (
@@ -11,7 +12,9 @@ const HomePage = ({ blogPosts }) => {
             <div className="blog_posts_container">
                 {blogPosts ? (
                     blogPosts.map((post) => (
-                        <PostPreview key={post._id} post={post}></PostPreview>
+                        <Link to={`blogPost/${post._id}`} key={post._id}>
+                            <PostPreview key={post._id} post={post}></PostPreview>
+                        </Link>
                     ))
                 ): (
                     <p>Loading Blog Posts...</p>

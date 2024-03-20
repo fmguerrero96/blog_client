@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
 import Login from "./LogIn";
 import SignUp from "./SignUp";
+import BlogPostPage from "./BlogPostPage";
 import { useState, useEffect } from "react";
 
 const Router = () => {
@@ -50,6 +51,10 @@ const Router = () => {
             path: "/signup",
             element: loggedIn ? <App loggedIn={loggedIn} user={user} handleLogOut={handleLogOut} blogPosts={blogPosts} /> 
                     : <SignUp loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}/>
+        },
+        {
+            path: "blogPost/:id",
+            element: <BlogPostPage loggedIn={loggedIn} user={user} handleLogOut={handleLogOut}/>,
         },
     ])
 
