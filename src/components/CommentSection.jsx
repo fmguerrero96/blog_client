@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const CommentSection = ({ postId }) => {
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState([]);
+    const [formData, setFormData] = useState({ message: '' });
 
     useEffect(() => {
         // Fetch comments from the backend
@@ -14,6 +15,19 @@ const CommentSection = ({ postId }) => {
     
     return(
         <div className="comment_section_container">
+
+            <form onSubmit={handleSubmit}>
+                <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Enter your comment"
+                />
+                <button type="submit">Submit</button>
+            </form>
+
+            {error && <div className="error">{error}</div>}
+
             <h2>Comments</h2>
             {comments.length > 0 ? (
                 <ul>
