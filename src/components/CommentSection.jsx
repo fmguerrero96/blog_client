@@ -12,6 +12,12 @@ const CommentSection = ({ postId }) => {
             .then(data => setComments(data))
             .catch(error => console.error('Error fetching comments:', error));
     }, [postId]); 
+
+    const handleChange = (e) => {
+        setFormData({ 
+            ...formData, [e.target.name]: e.target.value 
+        });
+    };
     
     return(
         <div className="comment_section_container">
