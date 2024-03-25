@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const CommentSection = ({ postID, user }) => {
+const CommentSection = ({ postID, user, loggedIn }) => {
     const [comments, setComments] = useState([]);
     const [formData, setFormData] = useState({
         message: '',
@@ -53,19 +53,24 @@ const CommentSection = ({ postID, user }) => {
     return(
         <div className="comment_section_container">
 
-            <form onSubmit={handleSubmit}>
-                <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Enter your comment"
-                />
-                <button type="submit">Submit</button>
-            </form>
+            <h2>Comments</h2>
 
+            {loggedIn ? (
+                <form onSubmit={handleSubmit}>
+                    <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Enter your comment"
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+            ) : (
+                <div>Please <Link to={'/login'}>LogIn</Link> to leave a comment on this post</div>
+            )}
+            
             {error && <div className="error">{error}</div>}
 
-            <h2>Comments</h2>
             {comments.length > 0 ? (
                 <ul>
                     {comments.map(comment => (
