@@ -5,13 +5,22 @@ const CommentSection = ({ postID, user, loggedIn }) => {
     const [comments, setComments] = useState([]);
     const [formData, setFormData] = useState({
         message: '',
-        _id: user._id,
+        _id: user ? user._id : undefined,
         postid: postID
     });
     const [error, setError] = useState('');
 
     useEffect(() => {
         fetchComments()
+
+        const token = localStorage.getItem('token')
+
+        if(token){
+            const decodedToken = atob(token.split('.')[1])
+            const userInfo = JSON.parse(decodedToken).user
+
+            setFormData({...formData, _id: userInfo._id})
+        } 
     }, []); 
 
     const fetchComments = () => {
