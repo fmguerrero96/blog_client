@@ -53,7 +53,11 @@ const CommentSection = ({ postID, user, loggedIn }) => {
     return(
         <div className="comment_section_container">
 
-            <h2>Comments</h2>
+            {comments.length > 0 ? (
+                <h2>{comments.length} Comments</h2>
+            ) : (
+                <h2>Comments</h2>
+            )} 
 
             {loggedIn ? (
                 <form onSubmit={handleSubmit}>
