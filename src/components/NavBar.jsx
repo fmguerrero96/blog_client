@@ -5,9 +5,9 @@ const NavBar = ({ loggedIn, user, handleLogOut}) => {
 
     return(
         <div className="navBar">
-            <h1 className='navTitle'>
+            <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}><h1 className='navTitle'>
                 FakeBlog
-            </h1>
+            </h1></Link>
             <div className="navLinks">
                 {loggedIn ? (
                     <>
