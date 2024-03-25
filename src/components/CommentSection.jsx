@@ -11,12 +11,16 @@ const CommentSection = ({ postID, user }) => {
     const [error, setError] = useState('');
 
     useEffect(() => {
+        fetchComments()
+    }, []); 
+
+    const fetchComments = () => {
         // Fetch comments from the backend
         fetch(`http://localhost:3000/blog/posts/${postID}/comments`)
             .then(res => res.json())
             .then(data => setComments(data))
             .catch(error => console.error('Error fetching comments:', error));
-    }, []); 
+    };
 
     const handleChange = (e) => {
         setFormData({ 
@@ -37,8 +41,7 @@ const CommentSection = ({ postID, user }) => {
             }
             // Clear form data and fetch comments again
             setFormData({ ...formData, message: '' });
-            // fetchComments();
-            console.log(formData)
+            fetchComments();
         } catch (error) {
             console.error('Error submitting comment:', error.message);
             setError('Failed to submit comment');
