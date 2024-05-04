@@ -42,7 +42,9 @@ const CommentSection = ({ postID, user, loggedIn }) => {
         try {
             const response = await fetch(`http://localhost:3000/blog/comments/${postID}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json', 
+                },
                 body: JSON.stringify(formData),
             });
             if (!response.ok) {
